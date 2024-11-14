@@ -6,6 +6,8 @@
   <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
 </footer>
 
+
+
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
   <!-- Control sidebar content goes here -->
@@ -13,17 +15,32 @@
 </div>
 @endauth
 <!-- jQuery -->
-<script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
-<script src="{{asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- overlayScrollbars -->
-<script src="{{asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('backend/dist/js/adminlte.min.js')}}"></script>
-<script src="{{asset('backend/plugins/sweetalert2.js')}}"></script>
-<script src="{{asset('backend/plugins/notyf.min.js')}}"></script>
+<script src="{{asset('public/backend/dist/js/adminlte.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/sweetalert2.js')}}"></script>
+<script src="{{asset('public/backend/plugins/notyf.min.js')}}"></script>
 
-<!-- Check and display the session variable 'swl' -->
+<!-- DataTables  & Plugins -->
+<script src="{{asset('public/backend/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{asset('public/backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
+
+<script src="{{asset('public/backend/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('public/backend/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -40,7 +57,7 @@
 
 <script>
  $(document).ready(function(){
-    $('#logout').click(function(e){
+  $(document).on('click', '#logout', function(e) {
       e.preventDefault();
       let link = $(this).attr('href');
       Swal.fire({
@@ -58,38 +75,71 @@
         }
       });
     });
+
+    $(document).on('click', '#deleteBtn', function(e) {
+      e.preventDefault();
+      let link = $(this).attr('href');
+      Swal.fire({
+        title:'Are your Want to delete?',
+        text:'Once Delete, This will be Permanently Delete!',
+        icon:'warning',
+        showDenyButton: true, // Display cancel button
+        confirmButtonText: 'Yes, Deleted!',
+        denyButtonText: `No, stay there!`
+      }).then((result)=>{
+        if(result.isConfirmed){
+          window.location.href=link
+        }else{
+          Swal.fire('Safe Data')
+        }
+      })
+    })
   });
 </script>
 
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+
       const notyf = new Notyf({
-        position: { x: 'right', y: 'top' },
-        duration: 4000 // Duration in milliseconds (3000ms = 3 seconds)
-
+        position: { x: 'center', y: 'top' },
+        duration: 4000 
       });
-
       @if(session('notyf'))
-          const notyfMessage = @json(session('notyf')); 
-
-
-          if (notyfMessage.type === 'success') {
-              notyf.success(notyfMessage.message); 
-          } else if (notyfMessage.type === 'error') {
-              notyf.error(notyfMessage.message);
-          } else if (notyfMessage.type === 'warning') {
-              notyf.warning(notyfMessage.message);
-          } else {
-              notyf.info(notyfMessage.message); 
-          }
+            const notyfMessage = @json(session('notyf'));
+            if (notyfMessage.type === 'success') {
+                notyf.success(notyfMessage.message);
+            } else if (notyfMessage.type === 'error') {
+                notyf.error(notyfMessage.message);
+            } else if (notyfMessage.type === 'warning') {
+                notyf.warning(notyfMessage.message);
+            } else {
+                notyf.info(notyfMessage.message);
+            }
       @endif
   });
 </script>
 
 
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 
 
+@stack('script')
 
 </body>
 

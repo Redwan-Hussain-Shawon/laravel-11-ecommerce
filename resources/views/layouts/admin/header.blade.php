@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>AdminLTE 3 | Fixed Sidebar</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -18,13 +19,22 @@
   <link rel="stylesheet" href="{{asset('public/backend/plugins/notyf.min.css')}}">
   <link rel="stylesheet" href="{{ asset('public/backend/plugins/summernote/summernote-bs4.min.css') }}">
   <link rel="stylesheet" href="{{asset('public/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
+  <link href="https://unpkg.com/filepond@4.29.1/dist/filepond.min.css" rel="stylesheet">
+<script src="https://unpkg.com/filepond@4.29.1/dist/filepond.min.js"></script>
   <link rel="stylesheet" href="{{asset('public/backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
  
 
   <link rel="stylesheet" href="{{asset('public/backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 
 <style>
+  .note-editable{
+    height: 200px;
+}
+.dropify-message p {
+    font-size: 34px; 
+}
+
 </style>
 </head>
 
@@ -172,10 +182,13 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-
+    @php
+    $setting = DB::table('settings')->first();
+  @endphp
     <aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4" style="position: fixed !important;">
       <!-- Brand Logo -->
       <a href="../../index3.html" class="brand-link px-4">
+        <img src="{{asset($setting->logo)}}" style="width: 50px;height:30px;border-radius:2px" alt="">
         <span class="brand-text font-weight-light">Ecommerce</span>
       </a>
 

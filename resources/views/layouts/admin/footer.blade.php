@@ -1,9 +1,9 @@
 @auth
-<footer class="main-footer">
+<footer class="bg-white  py-3 mx-3 px-4 text-center">
   <div class="float-right d-none d-sm-block">
     <b>Version</b> 3.2.0
   </div>
-  <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  <strong>Copyright &copy; 2014-2024 <a href="http://innovativeitsoft.com" class="text-center">Innovative It Soft</a>.</strong> All rights reserved.
 </footer>
 
 
@@ -36,6 +36,7 @@
 <script src="{{asset('public/backend/plugins/pdfmake/pdfmake.min.js')}}"></script>
 <script src="{{asset('public/backend/plugins/pdfmake/vfs_fonts.js')}}"></script>
 <script src="{{asset('public/backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
 
 <script src="{{asset('public/backend/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('public/backend/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>

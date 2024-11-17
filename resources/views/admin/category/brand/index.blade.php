@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('admin-content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
+
 <div class="content-wrapper" style="min-height: 458px;">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -124,10 +124,6 @@
 
 
   @push('script')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
-
-
-
   <script>
     $('.dropify').dropify({
     messages: {

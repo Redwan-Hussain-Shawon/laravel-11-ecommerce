@@ -63,6 +63,7 @@ class BrandController extends Controller
         return view('admin.category.brand.edit',compact('data'));
     }
     public function update(Request $request){
+        
         $slug = Str::slug($request->brand_name,'-');
         $data = [];
         $data['brand_name']= $request->brand_name;

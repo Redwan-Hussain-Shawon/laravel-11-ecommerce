@@ -50,6 +50,7 @@ Route::prefix('admin')->middleware(IsAdmin::class)->group(function () {
         Route::get('/delete/{id}',[ChildcategoryController::class,'destroy'])->name('childcategory.delete');
         Route::get('/edit/{id}',[ChildcategoryController::class,'edit']);
         Route::post('/update/{id}', [ChildcategoryController::class, 'update'])->name('childcategory.update');
+        Route::get('/get-childcategory/{id}',[ChildcategoryController::class,'getChildcategory']);
     }); 
     
     Route::prefix('brand')->group(function(){
@@ -72,6 +73,10 @@ Route::prefix('admin')->middleware(IsAdmin::class)->group(function () {
     Route::prefix('product')->group(function(){
         Route::get('/',[ProductController::class,'index'])->name('product.index');
         Route::get('/create',[ProductController::class,'create'])->name('product.create');
+        Route::post('/store',[ProductController::class,'store'])->name('product.store');
+        Route::get('/dactive-featured/{id}',[ProductController::class,'dactiveFeatured']);
+        Route::get('/active-featured/{id}',[ProductController::class,'activeFeatured']);
+        Route::get('/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
     });
 
     Route::prefix('coupon')->group(function(){

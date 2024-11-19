@@ -187,7 +187,7 @@
   @endphp
     <aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4" style="position: fixed !important;">
       <!-- Brand Logo -->
-      <a href="../../index3.html" class="brand-link px-4">
+      <a href="{{route('admin.home')}}" class="brand-link px-4">
         <img src="{{asset($setting->logo)}}" style="width: 50px;height:30px;border-radius:2px" alt="">
         <span class="brand-text font-weight-light">Ecommerce</span>
       </a>

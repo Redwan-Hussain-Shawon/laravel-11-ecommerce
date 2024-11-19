@@ -5,7 +5,7 @@
     <!-- Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library -->
     <li class="nav-item">
-      <a href="{{route('admin.home')}}" class="nav-link">
+      <a href="{{route('admin.home')}}" class="nav-link {{ Request::is('admin/home*') ? 'active':'' }}">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
           Dashboard
@@ -105,7 +105,7 @@
 
     <li class="nav-item {{ Request::is('admin/pickup-point*') ? 'menu-open' :'' }}">
       <a href="#" class="nav-link  {{ Request::is('admin/pickup-point*') ? 'active' :'' }}">
-        <i class="fa fa-truck" aria-hidden="true"></i>
+        <i class="fa fa-truck nav-icon" aria-hidden="true"></i>
         <p>
           Pickup Point
           <i class="right fas fa-angle-left nav-icon"></i>

@@ -88,4 +88,11 @@ class ChildcategoryController extends Controller
             return redirect()->route('childcategory.index')->with('notyf', ['type' => 'error', 'message' => 'Something Rong!']);
         }
     }
+
+    public function getChildcategory(string $id){
+        $childcategory = Childcategory::where('subcategory_id',$id)
+                                        ->select('id','childcategory_name')
+                                        ->get();
+        return response()->json($childcategory);
+    }
 }

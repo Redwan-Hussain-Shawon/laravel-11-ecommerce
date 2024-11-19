@@ -139,8 +139,8 @@
             { data: 'DT_RowIndex', name: 'DT_RowIndex' },   // Corrected property name
             { data: 'childcategory_name', name: 'childcategory_name' },
             { data: 'category_name', name: 'category_name' },
-            { data: 'subcategory_name', name: 'subcategory_name' }, // Fixed typo
-            { data: 'action', name: 'action', orderable: true, searchable: true } // Fixed typo
+            { data: 'subcategory_name', name: 'subcategory_name' },
+            { data: 'action', name: 'action', orderable: true, searchable: true } 
         ]
         })
       })
